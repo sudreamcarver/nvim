@@ -1,0 +1,14 @@
+{
+  "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
+  "ale": { "branch": "master", "commit": "6c337ad19ca32fcb11ff7f29a8e68598763b59a2" },
+  "coc.nvim": { "branch": "release", "commit": "4cc169449fa6fd69e5f5f0a67bda8fd74837f924" },
+  "lazy.nvim": { "branch": "main", "commit": "d8f26efd456190241afd1b0f5235fe6fdba13d4a" },
+  "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
+  "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
+  "mini.nvim": { "branch": "main", "commit": "ecde5ffd9adfd590d5c2d5d35a7f0152def894fc" },
+  "nvim-treesitter": { "branch": "master", "commit": "a67a312e7b08cbf2895d8f29a4b1f38f18d9a8e8" },
+  "nvim-web-devicons": { "branch": "master", "commit": "aafa5c187a15701a7299a392b907ec15d9a7075f" },
+  "render-markdown.nvim": { "branch": "main", "commit": "be3e3ab807059ddd247a802e8253b0cd3edef5a3" },
+  "rnvimr": { "branch": "main", "commit": "3c41af742a61caf74a9f83fb82b9ed03ef13b880" },
+  "tokyonight.nvim": { "branch": "main", "commit": "775f82f08a3d1fb55a37fc6d3a4ab10cd7ed8a10" }
+}

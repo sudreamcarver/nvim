@@ -1,0 +1,27 @@
+{
+    "coc.preferences.extensionUpdateCheck": "weekly",
+    "codeLens.enable": true,
+    "coc.preferences.formatOnSave": true,
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd",
+    "translate.aws.targetLanguageCode": "zh-CN",
+    "suggest.preferCompleteThanJumpPlaceholder": false,
+    //"inlayHint.enable": false
+    "snippets.userSnippetsDirectory": "~/.config/coc/ultisnips/",
+    "snippets.ultisnips.pythonPrompt": false,
+    //"languageserver": {
+    //"hdlChecker": {
+    //"command": "hdl_checker",
+    //"args": [
+    //"--lsp"
+    //],
+    //"filetypes": [
+    //"vhdl",
+    //"verilog",
+    //"systemverilog"
+    //]
+    //}
+    //}
+    //"hdlChecker.includePath": [
+    //"/usr/local/lib/ghdl/src/ieee2008/std_logic_1164.vhdl"
+    //]
+}
