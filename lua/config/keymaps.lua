@@ -15,6 +15,10 @@ keymap.set("n", " q", ":q<CR>")
 keymap.set("n", " w", ":w<CR>")
 keymap.set("n", "<leader>x", ":q!<CR>")
 keymap.set("n", "<leader>t", ":Ntree<CR>")
-keymap.set("n", "<leader>ra", ":RnvimrToggle<CR>")
--- 在 Neovim Lua 配置文件中的示例
-vim.api.nvim_set_var('rnvimrtoggle_picker', 1)
+
+-- use for bufferline
+vim.api.nvim_set_keymap('n', '<leader>l', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>h', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+-- use for neo-tree
+keymap.set("n", "tr", ":Neotree<CR>")

@@ -22,3 +22,6 @@ opt.smartcase = true
 
 opt.termguicolors = true
 opt.signcolumn = "yes"
+
+vim.opt.scrolloff = 10    -- Keep 10 lines above/below cursor
+vim.opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
