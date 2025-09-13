@@ -1,4 +1,15 @@
 require("neo-tree").setup({
+
+    event_handlers = {
+        {
+            event = "file_opened",
+            handler = function(file_path)
+                -- 打开文件后自动关闭 Neo-tree
+                require("neo-tree.command").execute({ action = "close" })
+            end,
+        },
+    },
+
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "NC",   -- or "" to use 'winborder' on Neovim v0.11+
     enable_git_status = true,
@@ -119,7 +130,7 @@ require("neo-tree").setup({
                 nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
             },
             ["<2-LeftMouse>"] = "open",
-            ["<cr>"] = "open",
+            --["<cr>"] = "open",
             ["<esc>"] = "cancel", -- close preview or floating neo-tree window
             ["P"] = {
                 "toggle_preview",
@@ -136,7 +147,7 @@ require("neo-tree").setup({
             -- ["S"] = "split_with_window_picker",
             -- ["s"] = "vsplit_with_window_picker",
             ["t"] = "open_tabnew",
-            -- ["<cr>"] = "open_drop",
+            ["<cr>"] = "open",
             -- ["t"] = "open_tab_drop",
             ["w"] = "open_with_window_picker",
             --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
@@ -155,8 +166,8 @@ require("neo-tree").setup({
             },
             ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
             ["d"] = "delete",
-            --["r"] = "rename",
-            ["r"] = "rename_basename",
+            ["r"] = "rename",
+            ["b"] = "rename_basename",
             ["y"] = "copy_to_clipboard",
             ["x"] = "cut_to_clipboard",
             ["p"] = "paste_from_clipboard",
