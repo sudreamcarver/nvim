@@ -17,9 +17,9 @@ git clone <this_repository>
 ```
 
 ## For none rolling distribution(if U use an old ubuntu or debian for example)
-Considerer none rolling distribution may get an old Ver for it own package manager.<br>
+Considerered none rolling distribution may get an old Ver for its own package manager.<br>
 Plz install NVIM from Pre-built archives.<br>
-The provides pre-built binaries for Linux systems.
+This provides pre-built binaries for Linux systems.
 ```bash
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim
