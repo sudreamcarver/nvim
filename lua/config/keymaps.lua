@@ -22,3 +22,4 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':BufferLineCyclePrev<CR>', { noremap 
 
 -- use for neo-tree
 keymap.set("n", "tr", ":Neotree<CR>")
+keymap.set("n", "<leader>c", ":bd<CR>")
