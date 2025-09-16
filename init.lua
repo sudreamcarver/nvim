@@ -123,5 +123,6 @@ require("config.bufferline")
 
 -- neo-tree
 require("config.neo-tree")
+require("config.autopair")
 --
 --
