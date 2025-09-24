@@ -50,7 +50,7 @@ require 'nvim-web-devicons'.setup {
     -- DevIcon will be appended to `name`
     override = {
         zsh = {
-            icon = "",
+            icon = "",
             color = "#428850",
             cterm_color = "65",
             name = "Zsh"
@@ -124,5 +124,6 @@ require("config.bufferline")
 -- neo-tree
 require("config.neo-tree")
 require("config.autopair")
+require("config.vimtable")
 --
 --

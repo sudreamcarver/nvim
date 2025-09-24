@@ -1,0 +1,87 @@
+# ========================
+# 基础模板
+# ========================
+snippet main "main function"
+int main(int argc, char **argv) {
+    ${1:// your code}
+    return 0;
+}
+endsnippet
+
+snippet incs "include iostream"
+#include <iostream>
+using namespace std;
+$0
+endsnippet
+
+# ========================
+# 类与函数
+# ========================
+snippet cls "class definition"
+class ${1:ClassName} {
+public:
+    ${1:ClassName}();
+    ~${1:ClassName}();
+
+private:
+    ${0:// members}
+};
+endsnippet
+
+snippet fun "function"
+${1:void} ${2:func}(${3:int arg}) {
+    ${0:// code}
+}
+endsnippet
+
+snippet ctor "constructor"
+${1:ClassName}::${1:ClassName}(${2:args}) {
+    ${0:// ctor body}
+}
+endsnippet
+
+snippet dtor "destructor"
+${1:ClassName}::~${1:ClassName}() {
+    ${0:// dtor body}
+}
+endsnippet
+
+# ========================
+# 常用语句
+# ========================
+#snippet for "for loop"
+#for (int ${1:i} = 0; ${1:i} < ${2:n}; ++${1:i}) {
+    #${0:// code}
+#}
+#endsnippet
+#
+#snippet while "while loop"
+#while (${1:condition}) {
+    #${0:// code}
+#}
+#endsnippet
+#
+#snippet if "if statement"
+#if (${1:condition}) {
+    #${0:// code}
+#}
+#endsnippet
+#
+#snippet ife "if-else statement"
+#if (${1:condition}) {
+    #${2:// code}
+#} else {
+    #${0:// code}
+#}
+#endsnippet
+#
+#snippet cout "cout <<"
+#std::cout << ${1:"text"} << std::endl;
+#$0
+#endsnippet
+#
+#snippet cin "cin >>"
+#std::cin >> ${1:var};
+#$0
+#endsnippet
+#

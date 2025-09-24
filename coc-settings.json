@@ -4,6 +4,7 @@
     "coc.preferences.formatOnSave": true,
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/20.1.8/clangd_20.1.8/bin/clangd",
     "suggest.preferCompleteThanJumpPlaceholder": false,
+    "snippets.userSnippetsDirectory": "/home/carver/.config/nvim/ultisnips"
     //"inlayHint.enable": false
     //"languageserver": {
     //"hdlChecker": {

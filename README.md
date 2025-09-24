@@ -1,4 +1,5 @@
 # My nvim configuration
+
 A nvim set for beginner as a nvim distribution.<br>
 just called it CBINvim.
 ```
