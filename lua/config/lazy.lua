@@ -22,7 +22,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("config.keymaps")
-require("config.coc")
 require("config.options")
 --require("config.neo-tree")
 
