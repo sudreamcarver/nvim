@@ -64,21 +64,46 @@ end
 ---@type vim.lsp.Config
 return {
     cmd = { 'clangd',
-        --'--query-driver=/usr/bin/gcc',
+        '--query-driver=/usr/bin/gcc',
         -- '--query-driver=/usr/bin/g++',
-        '--query-driver=/usr/bin/arm-none-eabi-gcc',
+        --'--query-driver=/usr/bin/arm-none-eabi-gcc',
         --'--query-driver=/usr/bin/arm-none-eabi-g++'
     },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
-    root_markers = {
-        '.clangd',
-        '.clang-tidy',
-        '.clang-format',
-        'compile_commands.json',
-        'compile_flags.txt',
-        'configure.ac', -- AutoTools
-        '.git',
-    },
+
+  -- ==================== START: 唯一的修改之处 ====================
+  -- 添加了下面的 root_dir 函数来解决跳转系统头文件时创建新 clangd 实例的问题。
+  root_dir = function(fname)
+    local util = require('lspconfig.util')
+
+    -- 将你原来的 root_markers 列表逻辑包含在此处
+    local root_markers = {
+      '.clangd',
+      '.clang-tidy',
+      '.clang-format',
+      'compile_commands.json',
+      'compile_flags.txt',
+      'configure.ac', -- AutoTools
+      '.git',
+    }
+
+    local root = util.root_pattern(unpack(root_markers))(fname)
+    if root then
+      return root
+    end
+
+    -- 关键逻辑：如果默认查找器失败了（比如在 /usr/include/stdio.h 中），
+    -- 检查是否已有 clangd 客户端在运行。如果有，就复用它的根目录，
+    -- 这样就不会为系统头文件启动一个新的 fallback server。
+    local clients = vim.lsp.get_clients({ name = 'clangd', bufnr = 0 })
+    if #clients > 0 then
+      return clients[1].config.root_dir
+    end
+
+    return nil
+  end,
+  -- ===================== END: 唯一的修改之处 =====================
+
     capabilities = {
         textDocument = {
             completion = {
@@ -93,6 +118,7 @@ return {
             client.offset_encoding = init_result.offsetEncoding
         end
     end,
+
     on_attach = function(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, 'LspClangdSwitchSourceHeader', function()
             switch_source_header(bufnr, client)

@@ -1,6 +1,6 @@
-vim.lsp.enable 'clangd'
+--vim.lsp.enable 'clangd'
 vim.lsp.enable 'jsonls'
---vim.lsp.enable 'ccls'
+vim.lsp.enable 'ccls'
 vim.lsp.enable 'lua_ls'
 vim.lsp.enable 'pyright'
 

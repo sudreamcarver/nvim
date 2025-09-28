@@ -46,27 +46,26 @@ local function switch_source_header(client, bufnr)
     end, bufnr)
 end
 
+-- This function is now active. It solves the issue of system headers not being attached to the LSP client.
+local function get_project_root(fname)
+    local lsp_util = require('lspconfig.util')
 
---local function get_project_root(fname)
-  --local lsp_util = require('lspconfig.util')
---
-  ---- 1. 首先，尝试使用 lspconfig 的标准方法寻找项目根目录
-  --local root = lsp_util.root_pattern('.ccls', 'compile_commands.json', '.git')(fname)
-  --if root then
-    --return root
-  --end
---
-  ---- 2. 如果失败了（比如我们在一个系统头文件里），就去“借用”已激活的 ccls 客户端的根目录
-  --local clients = vim.lsp.get_active_clients({ name = "ccls" })
-  --if #clients > 0 then
-    --return clients[1].root_dir
-  --end
---
-  ---- 3. 作为最后的备用方案，返回当前工作目录
-  --return vim.fn.getcwd()
---end
+    -- 1. First, try to find the project root using standard markers.
+    local root = lsp_util.root_pattern('.ccls', 'compile_commands.json', '.git')(fname)
+    if root then
+        return root
+    end
 
+    -- 2. If that fails (e.g., in a system header), "borrow" the root from an already active ccls client.
+    --    Using `get_clients` is the modern way to do this.
+    local clients = vim.lsp.get_clients({ name = "ccls", bufnr = 0 })
+    if #clients > 0 then
+        return clients[1].config.root_dir
+    end
 
+    -- 3. If no client is active, let lspconfig handle it by returning nil.
+    return nil
+end
 
 ---@type vim.lsp.Config
 return {
@@ -76,7 +75,10 @@ return {
     offset_encoding = 'utf-32',
     -- ccls does not support sending a null root directory
     workspace_required = true,
-    --root_dir = get_project_root,
+
+    -- This line is now activated to use our smart root-finding function.
+    root_dir = get_project_root,
+
     on_attach = function(client, bufnr)
         vim.api.nvim_buf_create_user_command(bufnr, 'LspCclsSwitchSourceHeader', function()
             switch_source_header(client, bufnr)
