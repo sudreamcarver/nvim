@@ -1,5 +1,6 @@
 return {
     'neovim/nvim-lspconfig',
+    enable = false,
 
     -- 确保 lspconfig 在 mason 之后配置
     dependencies = {
