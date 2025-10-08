@@ -64,7 +64,7 @@ end
 ---@type vim.lsp.Config
 return {
     cmd = { 'clangd',
-        '--query-driver=/usr/bin/gcc',
+        --'--query-driver=/usr/bin/gcc',
         -- '--query-driver=/usr/bin/g++',
         --'--query-driver=/usr/bin/arm-none-eabi-gcc',
         --'--query-driver=/usr/bin/arm-none-eabi-g++'
