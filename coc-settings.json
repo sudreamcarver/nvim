@@ -1,25 +1,26 @@
 {
-    "coc.preferences.extensionUpdateCheck": "weekly",
+    "extensions.recommendations": [],
+    "extensions.updateCheck": "weekly",
     "codeLens.enable": true,
     "coc.preferences.formatOnSave": true,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/20.1.8/clangd_20.1.8/bin/clangd",
     "suggest.preferCompleteThanJumpPlaceholder": false,
-    "snippets.userSnippetsDirectory": "/home/carver/.config/nvim/ultisnips"
-    //"inlayHint.enable": false
-    //"languageserver": {
-    //"hdlChecker": {
-    //"command": "hdl_checker",
-    //"args": [
-    //"--lsp"
-    //],
-    //"filetypes": [
-    //"vhdl",
-    //"verilog",
-    //"systemverilog"
-    //]
-    //}
-    //}
-    //"hdlChecker.includePath": [
-    //"/usr/local/lib/ghdl/src/ieee2008/std_logic_1164.vhdl"
-    //]
+    "snippets.userSnippetsDirectory": "/home/carver/.config/nvim/ultisnips",
+    "snippet.highlight": true,
+    "languageserver": {
+        "clangd": {
+            "command": "clangd",
+            "rootPatterns": [
+                "compile_flags.txt",
+                "compile_commands.json"
+            ],
+            "filetypes": [
+                "c",
+                "cc",
+                "cpp",
+                "c++",
+                "objc",
+                "objcpp"
+            ]
+        }
+    }
 }
