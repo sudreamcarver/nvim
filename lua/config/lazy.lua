@@ -21,8 +21,15 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Make tools previously installed by Mason available before lazy plugins load.
+-- This matters to startup plugins such as nvim-treesitter.
+local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+if vim.fn.isdirectory(mason_bin) == 1 then
+    local separator = vim.fn.has("win32") == 1 and ";" or ":"
+    vim.env.PATH = mason_bin .. separator .. vim.env.PATH
+end
+
 require("config.keymaps")
-require("config.coc")
 require("config.options")
 --require("config.neo-tree")
 
@@ -38,4 +45,5 @@ require("lazy").setup({
     install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
     checker = { enabled = false },
+    change_detection = { notify = false },
 })

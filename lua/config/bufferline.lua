@@ -1,5 +1,4 @@
 vim.opt.termguicolors = true
-require("bufferline").setup {}
 
 local bufferline = require('bufferline')
 bufferline.setup {
@@ -36,9 +35,9 @@ bufferline.setup {
         max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
         truncate_names = true,  -- whether or not tab names should be truncated
         tab_size = 18,
-        diagnostics = "coc",
-        diagnostics_update_in_insert = true, -- only applies to coc
-        diagnostics_update_on_event = false, -- use nvim's diagnostic handler
+        diagnostics = "nvim_lsp",
+        diagnostics_update_in_insert = false,
+        diagnostics_update_on_event = true,
         -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
         diagnostics_indicator = function(count)
             return "(" .. count .. ")"
