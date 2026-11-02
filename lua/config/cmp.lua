@@ -67,7 +67,7 @@ cmp.setup({
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
-			elseif luasnip.expand_or_locally_jumpable() then
+			elseif luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			elseif has_words_before() then
 				cmp.complete()
@@ -78,14 +78,30 @@ cmp.setup({
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
-			elseif luasnip.locally_jumpable(-1) then
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		-- Jump between snippet placeholders. <C-l>/<C-h> are reliable in most
+		-- terminals; <C-j> is kept as an alias but some terminals swallow it.
+		["<C-l>"] = cmp.mapping(function(fallback)
+			if luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-h>"] = cmp.mapping(function(fallback)
+			if luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
 		end, { "i", "s" }),
 		["<C-j>"] = cmp.mapping(function(fallback)
-			if luasnip.expand_or_locally_jumpable() then
+			if luasnip.expand_or_jumpable() then
 				luasnip.expand_or_jump()
 			else
 				fallback()

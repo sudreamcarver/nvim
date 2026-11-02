@@ -13,6 +13,14 @@ return {
         },
     },
     opts = {
+        formatters = {
+            -- clang-format 23 no longer falls back to ~/.clang-format when no
+            -- project .clang-format is found, so point it at the global file
+            -- explicitly.
+            ["clang-format"] = {
+                prepend_args = { "--style=file:/home/carver/.clang-format" },
+            },
+        },
         formatters_by_ft = {
             c = { "clang-format" },
             cpp = { "clang-format" },

@@ -38,7 +38,7 @@ return {
             table.insert(parsers, "latex")
         end
 
-        require("nvim-treesitter.configs").setup({
+        require("nvim-treesitter.config").setup({
             -- language parsers that MUST be installed
             ensure_installed = parsers,
             -- Grammar generation requires tree-sitter-cli. Avoid runtime errors

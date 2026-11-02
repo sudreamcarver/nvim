@@ -29,6 +29,10 @@ if vim.fn.isdirectory(mason_bin) == 1 then
     vim.env.PATH = mason_bin .. separator .. vim.env.PATH
 end
 
+-- Disable providers we do not use.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 require("config.keymaps")
 require("config.options")
 --require("config.neo-tree")

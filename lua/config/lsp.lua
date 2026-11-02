@@ -111,5 +111,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         if client:supports_method("textDocument/codeLens") then
             vim.lsp.codelens.enable(true, { bufnr = bufnr })
         end
+
+        if client.name == "clangd" and client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
     end,
 })
